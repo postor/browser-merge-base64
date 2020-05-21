@@ -9,13 +9,14 @@ yarn add canvas-merge-images
 ## usage
 
 ```
-import { mergeFile } from 'canvas-merge-images'
+import { mergeFile, mergeBase64 } from 'canvas-merge-images'
 
 let fileInput = document.getElementById('fileinput')
 let preview = document.getElementById('preview')
 
 fileInput.onchange = async () => {
   if (!fileInput.files) return
+  // you can use `mergeBase64` if you already have base64
   let base64 = await mergeFile(fileInput.files)
   preview.src = base64
   console.log(base64)
