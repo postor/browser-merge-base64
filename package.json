@@ -2,9 +2,10 @@
   "name": "browser-merge-base64",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "build":"babel src --out-dir dist"
   },
   "repository": {
     "type": "git",
