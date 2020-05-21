@@ -1,6 +1,6 @@
 {
-  "name": "browser-merge-base64",
-  "version": "1.0.0",
+  "name": "canvas-merge-images",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
