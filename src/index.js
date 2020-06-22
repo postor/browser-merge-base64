@@ -1,4 +1,9 @@
-export async function mergeBase64(base64s = []) {
+export async function mergeBase64(base64s = [], config = {}) {
+  const { quanlity } = {
+    quanlity: 0.7,
+    ...config,
+  }
+
   let imgs = await Promise.all(base64s.map(async x => await base642img(x)))
   let { width, height } = calcCanvas(imgs)
   let offscreenCanvas = document.createElement('canvas')
@@ -9,25 +14,16 @@ export async function mergeBase64(base64s = []) {
     imageContext.drawImage(img, 0, curTop)
     curTop += img.height
   }
-  return offscreenCanvas.toDataURL('image/jpeg', 1.0)
+  return offscreenCanvas.toDataURL('image/jpeg', quanlity)
 }
 
-export async function mergeFile(files = []) {
+export async function mergeFile(files = [], config = {}) {
   let base64s = await Promise.all([...files].map(async x => await file2base64(x)))
-  return mergeBase64(base64s)
+  return mergeBase64(base64s, config)
 }
 
 export function file2base64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.addEventListener("load", function () {
-      resolve(reader.result)
-    }, false)
-    reader.addEventListener("error", function (e) {
-      reject(e)
-    }, false)
-    reader.readAsDataURL(file)
-  })
+  return URL.createObjectURL(file)
 }
 
 export function base642img(imgFile) {
