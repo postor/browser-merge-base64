@@ -1,6 +1,6 @@
 export async function mergeBase64(base64s = [], config = {}) {
   const { quanlity } = {
-    quanlity: 0.7,
+    quanlity: 0.92,
     ...config,
   }
 
