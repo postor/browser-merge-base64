@@ -24,7 +24,7 @@ fileInput.onchange = async () => {
 }
 
 // in case of base64 strings
-let base64 = await mergeFile([
+let base64 = await mergeBase64([
   'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2w...',
   'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2w...',
 ])
